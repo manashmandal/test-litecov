@@ -1,0 +1,12 @@
+{
+  "name": "test-litecov-js",
+  "version": "1.0.0",
+  "description": "Test project for litecov JavaScript coverage",
+  "main": "calculator.js",
+  "scripts": {
+    "test": "jest --coverage --coverageReporters=lcov"
+  },
+  "devDependencies": {
+    "jest": "^29.0.0"
+  }
+}
