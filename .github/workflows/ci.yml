@@ -36,6 +36,7 @@ jobs:
           coverage-file: go/coverage.lcov
           title: "Go Coverage Report"
           annotations: "true"
+          show-files: "all"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -64,6 +65,7 @@ jobs:
           coverage-file: python/coverage.lcov
           title: "Python Coverage Report (LCOV)"
           annotations: "true"
+          show-files: "all"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -93,6 +95,7 @@ jobs:
           format: cobertura
           title: "Python Coverage Report (Cobertura)"
           annotations: "true"
+          show-files: "all"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -120,5 +123,6 @@ jobs:
           coverage-file: js/coverage/lcov.info
           title: "JavaScript Coverage Report"
           annotations: "true"
+          show-files: "all"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
