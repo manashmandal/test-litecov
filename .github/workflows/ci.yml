@@ -28,10 +28,7 @@ jobs:
 
       - name: Run Python tests with coverage (Cobertura XML)
         working-directory: python
-        run: |
-          pytest --cov=. --cov-report=xml:coverage.xml
-          echo "=== Coverage XML ==="
-          cat coverage.xml
+        run: pytest --cov=. --cov-report=xml:coverage.xml
 
       - name: Run litecov
         uses: manashmandal/litecov@fix-issues
