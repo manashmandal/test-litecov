@@ -17,3 +17,4 @@ This repo tests that litecov:
 4. Generates proper GitHub annotations for uncovered lines
 5. Posts accurate coverage comments on PRs
 # Trigger rebuild
+# Test uncovered lines
