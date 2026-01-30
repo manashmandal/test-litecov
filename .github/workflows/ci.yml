@@ -12,28 +12,33 @@ permissions:
   statuses: write
 
 jobs:
-  go-coverage:
+  python-coverage-cobertura:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up Go
-        uses: actions/setup-go@v5
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
-          go-version: "1.21"
+          python-version: "3.11"
 
-      - name: Run Go tests with coverage
-        working-directory: go
+      - name: Install dependencies
+        working-directory: python
+        run: pip install -r requirements.txt
+
+      - name: Run Python tests with coverage (Cobertura XML)
+        working-directory: python
         run: |
-          go test -coverprofile=coverage.out ./...
-          go install github.com/jandelgado/gcov2lcov@latest
-          gcov2lcov -infile=coverage.out -outfile=coverage.lcov
+          pytest --cov=. --cov-report=xml:coverage.xml
+          echo "=== Coverage XML ==="
+          cat coverage.xml
 
       - name: Run litecov
         uses: manashmandal/litecov@fix-issues
         with:
-          coverage-file: go/coverage.lcov
-          title: "Go Coverage Report"
+          coverage-file: python/coverage.xml
+          format: cobertura
+          title: "Python Coverage Report"
           annotations: "true"
           show-files: "all"
         env:
