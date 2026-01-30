@@ -1,5 +1,6 @@
 /**
  * Calculator module with basic math operations.
+ * @module calculator
  */
 
 function add(a, b) {

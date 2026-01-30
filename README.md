@@ -16,3 +16,5 @@ This repo tests that litecov:
 3. Shows files with NO coverage at all (e.g., `utils.*` files)
 4. Generates proper GitHub annotations for uncovered lines
 5. Posts accurate coverage comments on PRs
+# Trigger rebuild
+# Test uncovered lines
