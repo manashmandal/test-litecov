@@ -12,31 +12,30 @@ permissions:
   statuses: write
 
 jobs:
-  python-coverage-cobertura:
+  js-coverage:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
         with:
-          python-version: "3.11"
+          node-version: "20"
 
       - name: Install dependencies
-        working-directory: python
-        run: pip install -r requirements.txt
+        working-directory: js
+        run: npm install
 
-      - name: Run Python tests with coverage (Cobertura XML)
-        working-directory: python
-        run: pytest --cov=. --cov-report=xml:coverage.xml
+      - name: Run JS tests with coverage
+        working-directory: js
+        run: npm test
 
       - name: Run litecov
         uses: manashmandal/litecov@fix-issues
         with:
-          coverage-file: python/coverage.xml
-          format: cobertura
-          title: "Python Coverage Report"
+          coverage-file: js/coverage/lcov.info
+          title: "JavaScript Coverage Report"
           annotations: "true"
-          show-files: "all"
+          show-files: "changed"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

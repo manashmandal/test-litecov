@@ -1,5 +1,6 @@
 /**
  * Utility functions - this file has NO tests at all.
+ * @module utils
  */
 
 function max(a, b) {
